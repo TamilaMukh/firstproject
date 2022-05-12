@@ -112,6 +112,7 @@ export default {
     } else {
       this.pizzaSizePrice = Number(this.pizzas[this.curID].price) + 2000
     }
+    this.totalProductPrice = this.pizzaSizePrice
   },
   methods: {
     async sendObj() {
