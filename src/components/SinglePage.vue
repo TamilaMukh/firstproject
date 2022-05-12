@@ -144,12 +144,14 @@ export default {
         this.orders.forEach(item => {
           // var addBlock = null;
           if(item.userLogin == this.currentUser && item.status === false) {
-            item.goods.push(this.pizzas[this.curID])
-            console.log(item)
-            for (let k = 0; k < item.goods.length; k++) {
-              this.totalPrice = this.totalPrice + parseInt(item.goods[k].price)
-              item.total = this.totalPrice
-            }            
+            this.sentObj = {
+              title: this.pizzas[this.curID].title,
+              price: this.totalProductPrice,
+              size: this.pizzaSize,
+              image: this.pizzas[this.curID].images[1],
+              ingridients: this.ingList
+            }
+            item.goods.push(this.sentObj)       
             axios.put("https://627a34aa73bad506858480a8.mockapi.io/api/orders/1", item)
           } else {
             console.log('не вышло')
