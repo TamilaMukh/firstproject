@@ -93,7 +93,8 @@ export default {
       totalPrice: 0,
       ingList: [],
       totalProductPrice: 0,
-      totalIngPrice: 0
+      totalIngPrice: 0,
+      sentObj: null
     };
   },
   async mounted() {
@@ -105,14 +106,16 @@ export default {
       "https://627a34aa73bad506858480a8.mockapi.io/api/orders"
     );
     this.orders = orders.data;
-    if(this.pizzaSize === 0) {
-      this.pizzaSizePrice = Number(this.pizzas[this.curID].price)
-    } else if (this.pizzaSize === 1) {
-      this.pizzaSizePrice = Number(this.pizzas[this.curID].price) + 1000
-    } else {
-      this.pizzaSizePrice = Number(this.pizzas[this.curID].price) + 2000
-    }
+    this.pizzaSizePrice = Number(this.pizzas[this.curID].price) + 1000
     this.totalProductPrice = this.pizzaSizePrice
+
+    // if(this.pizzaSize === 0) {
+    //   this.pizzaSizePrice = Number(this.pizzas[this.curID].price)
+    // } else if (this.pizzaSize === 1) {
+    //   this.pizzaSizePrice = Number(this.pizzas[this.curID].price) + 1000
+    // } else {
+    //   this.pizzaSizePrice = Number(this.pizzas[this.curID].price) + 2000
+    // }
   },
   methods: {
     async sendObj() {
